@@ -112,10 +112,10 @@ module FFMPEG
         output_paths = []
         output_path = Pathname.new(output_path)
         output_dir = output_path.dirname
-        output_filename_kwargs = {
+        output_filename_kwargs = (metadata || {}).merge(
           basename: output_path.basename(output_path.extname),
           extname: output_path.extname
-        }
+        )
 
         args = []
         @presets.each do |preset|
